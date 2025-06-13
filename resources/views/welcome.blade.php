@@ -275,3 +275,57 @@
         @endif
     </body>
 </html>
+    <script>
+        console.log("Hello, world!");
+class ClickTracker {
+    constructor(apiUrl, siteId) {
+        this.apiUrl = apiUrl;
+        this.siteId = siteId;
+        this.init();
+    }
+
+    init() {
+        document.addEventListener('click', this.trackClick.bind(this));
+    }
+
+    trackClick(event) {
+        const clickData = {
+            site_id: this.siteId,
+            x: event.pageX,
+            y: event.pageY,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            path: window.location.pathname,
+            datetime: new Date().toISOString()
+        };
+        console.log(clickData);
+        this.sendData(clickData);
+        debugger;
+    }
+
+    sendData(data) {
+            // fetch(`${this.apiUrl}localhost/api/clicks`, {
+            //     fetch(`api/sites`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data),
+            //     keepalive: true
+            // });
+
+            fetch(`api/clicks`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                keepalive: true
+            });
+    }
+}
+
+// Инициализация трекера
+const tracker = new ClickTracker('https://your-admin-site.com', '1');
+// const tracker = new ClickTracker('https://your-admin-site.com', 'SITE_UNIQUE_ID');
+    </script>
