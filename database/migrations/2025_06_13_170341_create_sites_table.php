@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->uuid('tracking_id')->unique();
             $table->string('url');
-            $table->string('tracking_id')->unique(); // Why? 
             $table->timestamps();
         });
     }

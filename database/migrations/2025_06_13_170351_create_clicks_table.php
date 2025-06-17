@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('clicks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('site_id')->constrained();
+            $table->uuid('site_tracking_id');
+            $table->foreign('site_tracking_id')
+                ->references('tracking_id')
+                ->on('sites')
+                ->onDelete('cascade');
             $table->integer('x');
             $table->integer('y');
             $table->integer('width');
@@ -22,9 +26,8 @@ return new class extends Migration
             $table->timestamp('datetime');
             $table->timestamps();
         });
-
     }
-    
+
     /**
      * Reverse the migrations.
      */

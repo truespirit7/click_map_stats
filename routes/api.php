@@ -9,5 +9,17 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('sites', SiteController::class);
-Route::resource('clicks', ClickController::class);
+Route::get('test', function () {
+    return response()->json(['message' => 'API is working']);
+});
+
+Route::apiResource('sites', SiteController::class)->names('api.sites');
+
+Route::apiResource('clicks', ClickController::class)->names('api.clicks');
+
+
+Route::get('sites/{site}/activity', [SiteController::class, 'activity'])
+    ->name('api.sites.activity');
+
+Route::get('sites/{site}/clickmap', [SiteController::class, 'clickMap'])
+    ->name('api.sites.clickmap');

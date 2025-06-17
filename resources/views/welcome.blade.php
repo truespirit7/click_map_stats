@@ -290,7 +290,7 @@ class ClickTracker {
 
     trackClick(event) {
         const clickData = {
-            site_id: this.siteId,
+            site_tracking_id: this.siteId,
             x: event.pageX,
             y: event.pageY,
             width: window.innerWidth,
@@ -300,11 +300,11 @@ class ClickTracker {
         };
         console.log(clickData);
         this.sendData(clickData);
-        debugger;
     }
 
     sendData(data) {
-            // fetch(`${this.apiUrl}localhost/api/clicks`, {
+        debugger;
+         // Используйте эту строку для отладки в браузере
             //     fetch(`api/sites`, {
             //     method: 'POST',
             //     headers: {
@@ -326,6 +326,6 @@ class ClickTracker {
 }
 
 // Инициализация трекера
-const tracker = new ClickTracker('https://your-admin-site.com', '1');
+const tracker = new ClickTracker('http://localhost', '35244fe9-0551-471e-95a5-92597c555276');
 // const tracker = new ClickTracker('https://your-admin-site.com', 'SITE_UNIQUE_ID');
     </script>

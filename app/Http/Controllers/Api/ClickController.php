@@ -28,6 +28,7 @@ class ClickController extends Controller
         //     'height' => 'required|integer',
         //     'path' => 'required|string',
         // ]);
+        $a = $request->all();
 
         $click = Click::create($request->all());
 
