@@ -1,18 +1,17 @@
 async function fetchData() {
     const siteId = document.getElementById('siteId').dataset.siteId;
-
     const response = await fetch(`/api/sites/${siteId}/activity`);
     return await response.json();
 }
 
 async function createChart() {
     const apiData = await fetchData();
-
-    // Подготовка данных - кол-во кликов в час
+    
+    // Подготовка данных - теперь apiData содержит объект с ключами-часами и значениями-количеством
     const hours = Array.from({ length: 24 }, (_, i) => i);
     const counts = hours.map(hour => {
-        const hourKey = hour.toString();
-        return apiData[hourKey] ? apiData[hourKey].length : 0;
+        const hourKey = hour.toString().padStart(2, '0'); // Форматируем час в двузначный формат
+        return apiData[hourKey] || 0; // Берем значение или 0, если часа нет в данных
     });
 
     const labels = hours.map(h => `${h}:00`);
@@ -46,7 +45,7 @@ async function createChart() {
                 x: {
                     title: {
                         display: true,
-                        text: 'Часы дня'
+                        text: 'Часы'
                     }
                 }
             },

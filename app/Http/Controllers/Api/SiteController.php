@@ -63,7 +63,7 @@ class SiteController extends Controller
     }
 
     // for click map
-    public function clickMap(Site $site)
+    public function clickmap(Site $site)
     {
         $clickMapData = $this->clickService->getClickMapData($site->tracking_id);
         return response()->json($clickMapData);

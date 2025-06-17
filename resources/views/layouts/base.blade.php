@@ -13,6 +13,11 @@
 </head>
 <body>
     <main>
+    @if(url()->previous() !== url()->current())
+    <a style="margin: 10px; margin-left: 30px; background-color: yellow; " href="{{ url()->previous() }}" class="btn btn-info">
+        <i class="fas fa-arrow-left"></i> Вернуться назад
+    </a>
+    @endif
         @yield('content')
     </main>
 </body>
