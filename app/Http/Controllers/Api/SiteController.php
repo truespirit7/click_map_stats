@@ -66,6 +66,7 @@ class SiteController extends Controller
     public function clickmap(Site $site)
     {
         $clickMapData = $this->clickService->getClickMapData($site->tracking_id);
+
         return response()->json($clickMapData);
     }
 
@@ -82,6 +83,7 @@ class SiteController extends Controller
      */
     public function destroy(Site $site)
     {
-        //
+        Site::destroy($site->id);
+        return response()->json(null, 204);
     }
 }

@@ -30,7 +30,7 @@ class ClickService
     public function getClickMapData($siteId)
     {
         return Click::select(DB::raw('count(*) as click_count, x, y'))
-            ->where('site_id', $siteId)
+            ->where('site_tracking_id', $siteId)
             ->groupBy('x', 'y')
             ->get();
     }

@@ -276,7 +276,7 @@
     </body>
 </html>
     <script>
-        console.log("Hello, world!");
+console.log("ClickTracker running!");
 class ClickTracker {
     constructor(apiUrl, siteId) {
         this.apiUrl = apiUrl;
@@ -303,16 +303,6 @@ class ClickTracker {
     }
 
     sendData(data) {
-        debugger;
-         // Используйте эту строку для отладки в браузере
-            //     fetch(`api/sites`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //     keepalive: true
-            // });
 
             fetch(`api/clicks`, {
                 method: 'POST',
@@ -327,5 +317,4 @@ class ClickTracker {
 
 // Инициализация трекера
 const tracker = new ClickTracker('http://localhost', '35244fe9-0551-471e-95a5-92597c555276');
-// const tracker = new ClickTracker('https://your-admin-site.com', 'SITE_UNIQUE_ID');
     </script>

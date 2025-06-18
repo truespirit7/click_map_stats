@@ -33,8 +33,15 @@
             >
                 Добавить сайт
             </button>
+
         </div>
-        
+
+
+        <div id="myModal" class="modal">
+    <div class="modal-content">
+
+    </div>
+</div>
         <!-- Список сайтов -->
         <div class="border-t border-gray-200 px-6 py-4">
             <h2 class="text-lg font-semibold text-gray-800 mb-4">Мои сайты</h2>
@@ -62,12 +69,27 @@
                             class="text-green-600 hover:text-green-800 transition-colors"
                             title="Карта кликов"
                         >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-                        </svg>    
-                            </a>
+                        </svg>
+    
+                        </a>
+
+
+
+                                    <button 
+                @click="copyCode(site.tracking_id, site.url)"
+                class="text-purple-600 hover:text-purple-800 transition-colors"
+                title="Копировать JS-код для сайта"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+            </button>
+
                         <button 
-                            @click="removeSite(site.id)"
+                            @click="deleteSite(site.id)"
                             class="text-red-500 hover:text-red-700 transition-colors"
                             title="Удалить"
                         >
