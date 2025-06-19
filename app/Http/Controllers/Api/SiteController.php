@@ -13,7 +13,6 @@ class SiteController extends Controller
 
     protected $clickService;
 
-    // Вариант 1: Через конструктор (рекомендуется)
     public function __construct(ClickService $clickService)
     {
         $this->clickService = $clickService;
