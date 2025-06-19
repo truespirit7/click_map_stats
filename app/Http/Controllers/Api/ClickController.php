@@ -21,14 +21,10 @@ class ClickController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'x' => 'required|integer',
-        //     'y' => 'required|integer',
-        //     'width' => 'required|integer',
-        //     'height' => 'required|integer',
-        //     'path' => 'required|string',
-        // ]);
-        $a = $request->all();
+         $request->validate([
+             'x' => 'required|integer',
+             'y' => 'required|integer',
+         ]);
 
         $click = Click::create($request->all());
 
